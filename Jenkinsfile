@@ -15,6 +15,12 @@ pipeline{
 
         }
     
+        stage('Checkout') {
+            steps {
+                // This step pulls the code from the configured Git repository in Jenkins job configuration.
+                checkout scm
+            }
+        }
 
         stage("Build Application"){
             steps {
