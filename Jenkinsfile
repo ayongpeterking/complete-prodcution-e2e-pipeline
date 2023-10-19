@@ -15,9 +15,10 @@ pipeline{
 
         }
     
-        stage("Checkout from SCM"){
+
+        stage("Build Application"){
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/dmancloud/complete-prodcution-e2e-pipeline'
+                sh "mvn clean package"
             }
 
         }
