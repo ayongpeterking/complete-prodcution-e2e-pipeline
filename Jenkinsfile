@@ -79,8 +79,18 @@ pipeline{
                     }
                 }
             }
+   
+        }
 
-        }    
+        // New stage to trigger the CD pipeline
+        stage("Trigger CD Pipeline") {
+            steps {
+                script {
+                    // Assuming the CD pipeline job's name is 'cd'
+                    build(job: 'end-to-end-cd', parameters: [string(name: 'IMAGE_TAG', value: "${IMAGE_TAG}")])
+                }
+            }
+        }  
     
     }
 
